@@ -15,11 +15,11 @@ router.post("/register", (req, res) => {
   console.log(userData);
   Users.add(userData)
     .then(user => {
-      res.status(201).json(user);
+      res.status(201).json(user.id, user.email, `${user.user_name} Registered!`);
     })
     .catch(error => {
       console.log(error);
-      res.status(500).json({ errorMessage: "Failed to register new user " });
+      res.status(500).json({ errorMessage: "Failed to register new user" });
     });
 });
 
@@ -40,7 +40,7 @@ router.post("/login", (req, res) => {
     })
     .catch(error => {
       console.log(error);
-      res.status(500).json({ errorMessage: "Failed to retrieve credentials " });
+      res.status(500).json({ errorMessage: "Failed to retrieve credentials" });
     });
 });
 
